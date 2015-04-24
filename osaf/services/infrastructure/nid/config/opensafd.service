@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenSAF daemon
+After=remote-fs.target local-fs.target syslog.target network.target
+
+[Service]
+ExecStart=/etc/init.d/opensafd start
+ExecStop=/etc/init.d/opensafd stop
+Type=forking
+PIDFile=/var/run/opensaf/osafamfnd.pid
+ControlGroup=cpu:/
+
+[Install]
+WantedBy=multi-user.target
